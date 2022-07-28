@@ -18,6 +18,6 @@ object Api {
             .baseUrl(BASE_URL)
             .build()
     }
-    val MOVIE_API: MovieApi by lazy { retrofit.create(MovieApi::class.java) }
+    val movieApi: MovieApi by lazy { retrofit.create(MovieApi::class.java) }
 
 }

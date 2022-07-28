@@ -6,6 +6,8 @@ object AppConfig {
 
     const val API_KEY = BuildConfig.API_KEY
 
+    const val PAGE_SIZE = 20
+
     const val IMAGE_URL = "https://image.tmdb.org/t/p/original"
 
 }

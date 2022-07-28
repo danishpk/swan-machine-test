@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -48,7 +50,8 @@ ext.retrofitVersion = '2.9.0'
 ext.okhttpVersion = '4.9.0'
 ext.coroutineVersion = '1.6.1'
 ext.navVersion = '2.5.1'
-ext.glideVersion = '4.11.0'
+ext.glideVersion = '4.12.0'
+ext.pagingVersion = '3.1.1'
 
 dependencies {
 
@@ -81,4 +84,7 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    //Paging
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
 }

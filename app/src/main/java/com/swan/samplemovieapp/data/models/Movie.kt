@@ -2,10 +2,11 @@ package com.swan.samplemovieapp.data.models
 
 import com.google.gson.annotations.SerializedName
 import com.swan.samplemovieapp.AppConfig
+import com.swan.samplemovieapp.utils.FormatUtils
 
 data class Movie(
     @SerializedName("id")
-    val id: Int?,
+    val id: Int,
 
     @SerializedName("title")
     val title: String?,
@@ -22,6 +23,9 @@ data class Movie(
     @SerializedName("popularity")
     val popularity: Double?,
 
+    @SerializedName("release_date")
+    val strReleaseDate: String?,
+
     @SerializedName("poster_path")
     val posterPath: String?,
 
@@ -29,5 +33,9 @@ data class Movie(
     val voteAverage: Double?
 
 ) {
-    val imageUrl = AppConfig.IMAGE_URL + posterPath
+    val imageUrl: String get() {
+       return AppConfig.IMAGE_URL + posterPath
+    }
+
+    val releaseDate: String? get() = strReleaseDate?.let { FormatUtils.formattedDate(it) }
 }
