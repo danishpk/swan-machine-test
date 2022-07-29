@@ -10,7 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.swan.samplemovieapp.R
 import com.swan.samplemovieapp.databinding.FragmentMovieListBinding
+import com.swan.samplemovieapp.extentions.showToast
 import com.swan.samplemovieapp.ui.base.PagingLoadStateAdapter
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 
@@ -50,18 +52,29 @@ class MovieListFragment : Fragment() {
                 }
             )
 
+            viewNetworkState.btnRetry.setOnClickListener {
+                adapter.retry()
+            }
+
+            swipeRefreshList.setOnRefreshListener {
+               adapter.refresh()
+            }
+
             adapter.loadStateFlow
                 .distinctUntilChangedBy { it.refresh }
                 .asLiveData().observe(viewLifecycleOwner) { loadStates ->
                     pbLoading.isVisible = loadStates.refresh is LoadState.Loading
-                    emptyView.vEmpty.isVisible =
-                        loadStates.refresh is LoadState.NotLoading && adapter.itemCount == 0
+
+                    emptyView.vEmpty.isVisible = loadStates.refresh is LoadState.NotLoading && adapter.itemCount == 0
                     viewNetworkState.vNetworkState.isVisible = loadStates.refresh is LoadState.Error
-                    rvMovies.isVisible = !binding.viewNetworkState.vNetworkState.isVisible
+                    swipeRefreshList.isRefreshing = loadStates.refresh is LoadState.Loading
+                    rvMovies.isVisible = !viewNetworkState.vNetworkState.isVisible
                     rvMovies.scrollToPosition(0)
+
+                    if (loadStates.refresh is LoadState.Error) {
+                        requireContext().showToast(R.string.network_connection_error_message)
+                    }
                 }
-
-
         }
     }
 

@@ -16,12 +16,14 @@
             android:layout_height="100dp"
             android:layout_marginBottom="@dimen/padding_normal"
             android:alpha=".5"
+        app:tint="@color/light_white"
             android:padding="@dimen/padding_normal"
             app:srcCompat="@drawable/ic_cloud_off_black_24dp" />
 
     <TextView
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="wrap_content"
+        android:textColor="@color/light_white"
             android:layout_height="wrap_content"
             android:text="@string/network_connection_error_title" />
 
@@ -31,12 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+        android:textColor="@color/normal_text_white"
             android:gravity="center"
             android:text="@string/network_connection_error_message" />
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRetry"
-
             app:backgroundTint="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

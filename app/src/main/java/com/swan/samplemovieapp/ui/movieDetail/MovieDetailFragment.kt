@@ -47,6 +47,9 @@ class MovieDetailFragment : Fragment() {
     private fun setupUI() {
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
+        bindingNetworkView.btnRetry.setOnClickListener {
+            viewModel.refresh()
+        }
         viewModel.movie.observe(viewLifecycleOwner) {
             bindingNetworkView.vLoading.isVisible = it is Resource.Loading
             bindingNetworkView.vError.isVisible = it is Resource.Error
