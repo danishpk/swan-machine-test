@@ -39,7 +39,9 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setupUI() {
-        observeMovies()
+        viewModel.movies.observe(viewLifecycleOwner) {
+            adapter.submitData(lifecycle, it)
+        }
 
         binding.apply {
             rvMovies.adapter = adapter.withLoadStateFooter(
@@ -60,12 +62,6 @@ class MovieListFragment : Fragment() {
                 }
 
 
-        }
-    }
-
-    private fun observeMovies() {
-        viewModel.movies.observe(viewLifecycleOwner) {
-            adapter.submitData(lifecycle, it)
         }
     }
 

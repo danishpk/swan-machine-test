@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:id="@+id/cv_root"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl_root"
+    app:cardPreventCornerOverlap="false"
     android:layout_margin="4dp"
-    app:cardCornerRadius="4dp">
-
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
+        android:background="@drawable/bg_top_curved"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivMoviePoster"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_placeholder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="200dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/llLabelLayout">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:background="@drawable/gradient_bg"
-            android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            <ImageView
+                 android:id="@+id/ivMoviePoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_placeholder" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/llLabelLayout"
+            android:padding="@dimen/padding_small"
             app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -43,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                style="?attr/textAppearanceBody2"
+                android:textColor="@color/normal_text_white"
                 app:layout_constraintBottom_toTopOf="@+id/tvMovieReleaseDate"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Behind the enemy lines" />
@@ -53,15 +59,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                style="?attr/textAppearanceCaption"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/blue_gray_300"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Jun 09, 2021" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+
+
+</com.google.android.material.card.MaterialCardView>
 
 

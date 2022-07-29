@@ -7,5 +7,8 @@
     <string name="network_connection_error_message">Failed to connect to server, Please try again</string>
     <string name="network_connection_error_title">No Connection Found</string>
     <string name="network_button_retry">Retry</string>
+    <string name="movie_detail_genres_label">Drama • Thriller</string>
+    <string name="movie_detail_overview_label">Overview</string>
+    <string name="movie_detail_poster_view">Poster View</string>
 
 </resources>

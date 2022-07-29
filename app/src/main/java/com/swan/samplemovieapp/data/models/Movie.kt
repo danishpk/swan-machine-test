@@ -8,6 +8,9 @@ data class Movie(
     @SerializedName("id")
     val id: Int,
 
+    @SerializedName("tagline")
+    val tagline: String?,
+
     @SerializedName("title")
     val title: String?,
 
@@ -29,12 +32,19 @@ data class Movie(
     @SerializedName("poster_path")
     val posterPath: String?,
 
+    @SerializedName("backdrop_path")
+    val backdropPath: String?,
+
     @SerializedName("vote_average")
     val voteAverage: Double?
 
 ) {
-    val imageUrl: String get() {
+    val posterImageUrl: String get() {
        return AppConfig.IMAGE_URL + posterPath
+    }
+
+    val backdropImageUrl: String get() {
+        return AppConfig.IMAGE_URL + backdropPath
     }
 
     val releaseDate: String? get() = strReleaseDate?.let { FormatUtils.formattedDate(it) }

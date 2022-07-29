@@ -24,13 +24,12 @@ class MoviesListAdapter(private val onItemClick: (movie: Movie) -> Unit) :
                 tvMovieReleaseDate.text = movie.releaseDate
 
                 Glide.with(itemView)
-                    .load(movie.imageUrl)
+                    .load(movie.posterImageUrl)
                     .centerCrop()
                     .placeholder(
                         ContextCompat.getDrawable(itemView.context,
                             R.drawable.img_placeholder))
                     .error(R.drawable.img_placeholder)
-                    // .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivMoviePoster)
 

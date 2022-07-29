@@ -3,35 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimaryVariant"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.moviesList.MovieListFragment">
 
 
     <androidx.appcompat.widget.Toolbar
-        app:title="Movies"
-        app:titleTextColor="@color/light_white"
         android:id="@+id/listToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/colorPrimaryVariant"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"/>
+        android:theme="?attr/actionBarTheme"
+        app:title="Movies"
+        app:titleTextColor="@color/light_white" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
         android:id="@+id/swipeRefreshList"
         android:layout_width="match_parent"
-        android:background="?attr/colorPrimary"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_below="@+id/listToolbar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMovies"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
